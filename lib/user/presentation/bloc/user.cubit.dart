@@ -12,7 +12,6 @@ class UserCubit extends Cubit<UserState> {
     try {
       // Add info to people box
       dynamic response = await userService.addUser(userEntity);
-      print(response);
       emit(UserLoadedState(response));
     } catch (e) {
       emit(UserErrorState(e));

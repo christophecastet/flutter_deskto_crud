@@ -5,8 +5,8 @@ part 'user.model.g.dart';
 @HiveType(typeId: 0)
 class UserModel {
   @HiveField(0)
-  String name;
+  String? name;
   @HiveField(1)
-  DateTime birthDate;
+  DateTime? birthDate;
   UserModel(this.name, this.birthDate);
 }
