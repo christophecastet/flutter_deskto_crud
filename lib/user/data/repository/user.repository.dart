@@ -19,7 +19,6 @@ class UserRepository {
     UserHive userHive = UserHive();
     try {
       dynamic userListDto = await userHive.getUserListHive();
-      //UserEntity userEntity = DtoUserParser.userDtoToUserEntity(userDto);
       return userListDto;
     } catch (e) {
       rethrow;
@@ -30,9 +29,7 @@ class UserRepository {
     UserHive userHive = UserHive();
     try {
       UserDto userDto = DtoUserParser.userEntityToUserDto(userEntity);
-      print(userDto);
       dynamic result = await userHive.putUserListHive(idx, userDto);
-      //UserEntity userEntity = DtoUserParser.userDtoToUserEntity(userDto);
       return result;
     } catch (e) {
       rethrow;
@@ -42,9 +39,7 @@ class UserRepository {
   Future<dynamic> deleteUser(int idx) async {
     UserHive userHive = UserHive();
     try {
-      //UserDto userDto = DtoUserParser.userEntityToUserDto(userEntity);
       dynamic result = await userHive.deleteUserListHive(idx);
-      //UserEntity userEntity = DtoUserParser.userDtoToUserEntity(userDto);
       return result;
     } catch (e) {
       rethrow;

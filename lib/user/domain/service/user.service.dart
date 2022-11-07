@@ -1,4 +1,3 @@
-import 'package:test_desktop_app/user/data/dto/user.dto.dart';
 import 'package:test_desktop_app/user/data/repository/user.repository.dart';
 import 'package:test_desktop_app/user/domain/entity/user.entity.dart';
 
@@ -7,7 +6,6 @@ class UserService {
     UserRepository userRepository = UserRepository();
     try {
       dynamic result = await userRepository.addUser(userEntity);
-      print(result);
       return result;
     } catch (e) {
       throw Exception('Failure');
@@ -32,7 +30,6 @@ class UserService {
       if (result == 'Success') {
         userList[idx] = userEntity;
       }
-      print(userList);
       return userList;
     } catch (e) {
       throw Exception('Failure');

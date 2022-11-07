@@ -9,7 +9,7 @@ pour Windows (CLI):
 - flutter run -d windows
 - flutter build windows
 
-### Exemple de CRUD Bloc archi
+### Exemple de CRUD Hive + Bloc archi
 
 doc : https://docs.hivedb.dev/#/
 
@@ -34,7 +34,6 @@ lib/
 -----------------------------/dto/
 -----------------------------------------/dto_ma_feature.parser.dart
 -----------------------------------------/ma_feature.dto.dart
------------------------------------------/ma_feature.dto.g.dart (fichier auto généré)
 -----------------------------/repository/
 ----------------------------------------/ma-feature.repository.dart
 --------------/domain/
@@ -67,4 +66,37 @@ int field_2;
 }
 
 - Run build task : flutter packages pub run build_runner build // cela générera mon_model.model.g.dart
-# flutter_deskto_crud
+
+# flutter_desktop_crud
+
+=> dans initState -> Hive.registerAdapter<MonModel>(MonModelAdapter());
+
+Create :
+
+=> action Add (user.page.dart) -> implementer la suite logique bloc (context.read<UserCubit>().addUser(userEntity);)
+=> dérouler du flux -> cubit/service/repo/parser/hive/model -> return : 'Success'
+=> si Success toast
+=> Action get pour Maj du tableau
+
+Read :
+
+=> action Get ou lors d'un LoadedState (user.page.dart) -> implementer la suite logique bloc (context.read<UserCubit>().getUsersList();)
+=> dérouler du flux -> cubit/service/repo/parser/hive/model -> return : userList
+=> Maj auto des données
+
+Update:
+
+=> action Update (user.page.dart) -> implementer la suite logique bloc (context.read<UserCubit>().updateInfo();)
+=> dérouler du flux -> cubit/service/repo/parser/hive/model -> return : 'Success'
+=> si Success on update la userList en fonction de l'idx mis à jour -> return userListUpdated
+=> dans user.page.dart on écoute le state UserUpdatedState si trigger on update le tableau
+
+Delete :
+
+=> action Update (user.page.dart) -> implementer la suite logique bloc (context.read<UserCubit>().deleteInfo();)
+=> dérouler du flux -> cubit/service/repo/parser/hive/model -> return : 'Success'
+=> si Success on delete de la userList les datas correspondantes à l'idx -> return userListUpdated
+=> dans user.page.dart on écoute le state UserDeletedState si trigger on update le tableau
+
+Delete box :
+=> action Delete box (user.page.dart) -> Hive.deleteBoxFromDisk("userBox"); supprime la totalité des datas
