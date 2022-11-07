@@ -69,7 +69,7 @@ int field_2;
 
 # flutter_desktop_crud
 
-=> dans initState -> Hive.registerAdapter<UserModel>(UserModelAdapter());
+=> dans initState -> Hive.registerAdapter<MonModel>(MonModelAdapter());
 
 Create :
 
