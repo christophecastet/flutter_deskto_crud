@@ -7,7 +7,7 @@ pour Windows (CLI):
 - flutter config --enable-windows
 - flutter create my_app
 - flutter run -d windows
-- flutter build windows
+- flutter build windows ( inscription sur le windows store obligatoire)
 
 ### Exemple de CRUD Hive + Bloc archi
 
